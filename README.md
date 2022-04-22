@@ -125,6 +125,38 @@ Both will works, the shebang must be the first line of file
 
 ## 02_How to write script
 
+**CREATING AND USING VARIABLES**
+
+Ex:
+```
+#!/usr/bin/env bash
+FIRST_NAME=Bob
+FAVORITE_COLOR=blue
+
+echo Hello $FIRST_NAME, your favorite color is $FAVORITE_COLOR
+
+exit 0
+
+./greeting.sh
+```
+-------------------
+
+Variable is created by putting a equal sign between a name on the left side and value on right side.
+
+FIRST_NAME=Bob
+
+Variable consists of letter and numbers and underscodes.
+
+- Must begin with a letter or an underscore (Not a number)
+- Any character except the first can be a number
+- Are case sensitive
+- Usually all uppercase, but that´s not mandatory, that´s just by tradition
+- The value is anything that you can type, but uf ut has spaces it should be wrapprd in quotes
+
+NAME="Nome completo"
+DATANASC=22
+
+Spaces are not allowed on either side of the equal sign.
 ## 03_Take parameters
 
 ## 04_Read Files
