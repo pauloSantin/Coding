@@ -1,4 +1,4 @@
- ![hardest-programming-language](https://github.com/pauloSantin/Coding/blob/main/imgs/banner.png)
+![hardest-programming-language](https://github.com/pauloSantin/learning/blob/maina0/fundo.jpg)
 
 
 
