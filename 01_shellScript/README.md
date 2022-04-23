@@ -274,6 +274,18 @@ It returns the last thing returned to the system.
 
 **SOLUTION**: 03_challenge01.sh
 
+-------------------
+
+**THE IF STATEMENT**
+**THE ELSE CLAUSE**
+**THE ELIF ELSE**
+
+-------------------
+**THE WHILE LOOP**
+**THE FOR LOOP**
+**USING BREAK AND CONTINUE**
+
+
 ## 04_Read Files
 
 ## 05_Monitor process
