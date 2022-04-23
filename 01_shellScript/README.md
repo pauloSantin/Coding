@@ -189,8 +189,6 @@ vi 03_params.sh
 
 echo Hello $1
 
-exit 0
-
 ./03_params.sh MyName
 
 MyName
@@ -214,8 +212,6 @@ vi 03_paramsCorrect.sh
 USER_NAME=$1
 echo Hello $USER_NAME
 
-exit 0
-
 ./03_paramsCorrect.sh MyName
 
 MyName
@@ -236,12 +232,38 @@ echo Hello $USER_NAME
 echo $(date) #date
 echo $(pwd) #location
 
-exit 0
-
 ./03_paramsCorrect.sh MyName
 
 MyName
 ```
+
+And final thing is if a script executes without error. It should return a zero to the system.
+We currently aren't returning anything in particular to the system.
+We can see what got returned from the system by just doing an echo dollar sign question mark(echo $?)
+
+echo $?
+
+And that will show us the last exit code that the system received. So in this case, we are actually returning a zero.
+
+```
+#!/usr/bin/env bash
+
+USER_NAME=$1
+echo Hello $USER_NAME
+echo $(date)
+echo $(pwd)
+
+exit 0
+
+```
+
+And zero means sucess, anything other than zero means that there was some sort of an issue.
+The exit codes go from 0 to 255
+
+```
+echo $?
+```
+It returns the last thing returned to the system.
 
 ## 04_Read Files
 
