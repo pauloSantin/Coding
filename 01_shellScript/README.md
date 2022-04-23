@@ -157,7 +157,91 @@ NAME="Nome completo"
 DATANASC=22
 
 Spaces are not allowed on either side of the equal sign.
+
 ## 03_Take parameters
+
+**PASSING PARAMETER**
+
+We can get input from user of our script via parameters.
+Your script alwas receives parameters, even if it doesn't use them.
+
+Bash passes them in via soma special symbols.
+
+The first parameter, $0 is special in that it the path and name of the executing script.
+
+- $0 - the name of the script, the path is included.
+- $1 - the first parameter
+- $2 - the second parameter
+- $9 - the ninth parameter
+
+Generally, we don't use parameters past $9s since the use of curly braces with parameter is only supported in newer versions of the bash shell.
+Parameters make it possible to be interactive with user.
+
+If for example to echo the user,s name, we could do this.
+
+Ex:
+```
+touch 03_params.sh
+chmod 755 03_params.sh
+vi 03_params.sh
+
+#!/usr/bin/env bash
+
+echo Hello $1
+
+exit 0
+
+./03_params.sh MyName
+
+MyName
+```
+
+
+Its generally considered a bad practice, to work directly with the parameter since theirs names have no meaning.
+
+It is better to assign the parameter to a variable.
+That way, the variable's name can give some meaning to it.
+
+
+Ex:
+```
+touch 03_paramsCorrect.sh
+chmod 755 03_paramsCorrect.sh
+vi 03_paramsCorrect.sh
+
+#!/usr/bin/env bash
+
+USER_NAME=$1
+echo Hello $USER_NAME
+
+exit 0
+
+./03_paramsCorrect.sh MyName
+
+MyName
+```
+
+It is sometimes useful to know when something happend not just that it happened.
+That is where the date command comes in handy.
+
+```
+touch 03_paramsCorrect.sh
+chmod 755 03_paramsCorrect.sh
+vi 03_paramsCorrect.sh
+
+#!/usr/bin/env bash
+
+USER_NAME=$1
+echo Hello $USER_NAME
+echo $(date) #date
+echo $(pwd) #location
+
+exit 0
+
+./03_paramsCorrect.sh MyName
+
+MyName
+```
 
 ## 04_Read Files
 
