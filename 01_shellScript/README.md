@@ -266,12 +266,11 @@ echo $?
 It returns the last thing returned to the system.
 
 **CHALLENGE**
-**
+
 - Create a script named sport.sh
 - Make it executable
 - Accept two parameters a name and a favorite sport
 - Display any sentence to the console using those inputs.
-**
 
 ## 04_Read Files
 
