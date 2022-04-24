@@ -387,6 +387,7 @@ else
 fi
 
 ```
+You can have as many elifs as you need.
 
 -------------------
 **THE WHILE LOOP**
