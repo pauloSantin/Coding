@@ -317,7 +317,50 @@ fi
 
 ```
 
+We have a lot more options when we´re comparing two numbers.
+
+- eq  (if equal)
+- ne  (if not equal)
+- lt  (if less than)
+- gt  (if greater than)
+- le  (if less than or equal)
+- ge  (if greater than or equal)
+
+So we have a lot more compares when use boolean values.
+
 **THE ELSE CLAUSE**
+
+Sometimes you'd like to do one thing if the expressession is true and something else if it is false.
+That is where the else clause comes in.
+If the expression is false then the commands following the else. Up to the fi are executed. And if it is true, it executes the commands in between the and the else.
+So, let's go ahead and add the else to our script.
+
+```
+touch ifelse.sh
+chmod 755 ifelse.sh
+vi if.sh
+
+#!/usr/bin/env bash
+
+COLOR=$1
+if [ $COLOR="blue" ]
+then
+    echo "The color is blue"
+else
+    echo "The color is NOT blue
+fi
+
+USER_GUESS=$2
+COMPUTER=50
+
+if [ $USER_GUESS -lt $COMPUTER ]
+then
+     echo "Your are to low"
+else
+     echo "You are equal or too"
+fi
+```
+
 **THE ELIF ELSE**
 
 -------------------
