@@ -336,9 +336,9 @@ If the expression is false then the commands following the else. Up to the fi ar
 So, let's go ahead and add the else to our script.
 
 ```
-touch ifelse.sh
-chmod 755 ifelse.sh
-vi if.sh
+touch if_else.sh
+chmod 755 if_else.sh
+vi if_else.sh
 
 #!/usr/bin/env bash
 
@@ -362,6 +362,31 @@ fi
 ```
 
 **THE ELIF ELSE**
+There is still one more variation of the if we need to discuss.
+The elif which is an abbreviation of else if. It allows us to check a different expression than the one use the in if. Elif must come before the else
+
+```
+
+touch if_elif_else.sh
+chmod 755 if_elif_else.sh
+vi if_elif_else.sh
+
+#!/usr/bin/env bash
+
+USER_GUESS=$1
+COMPUTER=50
+
+if [ $USER_GUESS -lt $COMPUTER ]
+then
+     echo "Your are to low"
+elif [ $USER_GUESS -gt $COMPUTER ]
+then
+     echo "You are equal hight"
+else
+     echo "You guessed it."
+fi
+
+```
 
 -------------------
 **THE WHILE LOOP**
