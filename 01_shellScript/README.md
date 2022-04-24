@@ -277,6 +277,46 @@ It returns the last thing returned to the system.
 -------------------
 
 **THE IF STATEMENT**
+
+Writing code in a straigh line, where one line always executes after the next can't take us very far.
+In order to write useful scripts, we need the ability to make decisions.
+
+```
+if [ $COLOR = "blue"]
+then
+   echo "The color is blue"
+fi
+
+```
+The if statement allows us to do that. The basis form of the if statement is if - then - fi
+If is a test to see if an expression is true. If it is true, then thee commands between the then and the fi are executed.
+
+Fi sounds funny but has no deep meaning. It is simply backwards and denotes the end of if statement.
+
+Ex:
+```
+touch if.sh
+chmod 755 if.sh
+vi if.sh
+
+#!/usr/bin/env bash
+
+COLOR=$1
+if [ $COLOR="blue"]
+then
+    echo "The color is blue"
+fi
+
+USER_GUESS=$2
+COMPUTER=50
+
+if [ $USER_GUESS -lt $COMPUTER]
+then
+     echo "Your are to low"
+fi
+
+```
+
 **THE ELSE CLAUSE**
 **THE ELIF ELSE**
 
