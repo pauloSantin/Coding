@@ -28,7 +28,7 @@ Shell scripts can make your everyday task easier, predictable.:+1:
 * Interactive scripts
 * Handle bad data
 
-## 02_javaScript
+## 02_python
 
 
 
