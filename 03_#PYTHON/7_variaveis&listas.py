@@ -11,8 +11,5 @@ while(resposta == "S"):
     inventario.append(input("Departamento.: "))
     resposta=input("Digite \"S\" para continuar ").upper()
 
-
-
-
 for elemento in inventario:
     print(elemento)
