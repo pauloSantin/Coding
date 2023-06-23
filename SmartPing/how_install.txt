@@ -1,0 +1,11 @@
+  627  cp pinger.py /usr/lib/zabbix/externalscripts
+  628  cp smartping.sh /usr/lib/zabbix/externalscripts
+  629  cd /usr/lib/zabbix/externalscripts
+  630  ls -ll
+  631  chmod 777 pinger.py
+  632  chmod 777 smartping.sh
+
+
+  669  sudo apt install zabbix-sender
+  670  python3 /usr/lib/zabbix/externalscripts/pinger.py fda0::2:1c:6400:9609:1646 9 20 60 96091646
+  671  Zabbix_proxy -R config_cache_reload
