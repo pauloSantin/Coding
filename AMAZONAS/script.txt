@@ -1,0 +1,50 @@
+CPU=0; 
+x=0;
+while [[ $CPU -eq 0 && $x -lt 5 ]];
+	do CPU=$(top -b -d1 -n1 | grep -i "cpu" | head -c21 | sed 's/^.*:\s*//gi' | cut -d ' ' -f1 | cut -d '%' -f1) ; 
+	CPU=${CPU%%.*} ; 
+	x=$((x+1)) ; 
+done ; 
+
+UPTIME=$(cat /proc/uptime | cut -d ' ' -f1);
+
+UPTIME=${UPTIME%%.*};
+
+GATEWAY="$(route | grep -i default | cut -d ' ' -f10 | grep "10.")"; 
+
+NETADDR="$(ifconfig eth0 | grep -i "inet addr" | cut -d':' -f2 | cut -d' ' -f1)";
+
+NETMASK="$(route | grep eth0 | sed "1 d" | tr -s ' \t' ' ' | cut -d' ' -f3)";
+
+NODE1=$(sudo cat /opt/iprf/firmware/NodeCounter.awk /opt/iprf/tmp/rpltopology_graph.txt 2>&- | sed '2q;d' | cut -d',' -f2 | cut -d' ' -f2);
+NODE2=$(sudo cat /opt/iprf/firmware/NodeCounter.awk /opt/iprf/tmp/rpltopology_graph.txt 2>&- | sed '3q;d' | cut -d',' -f2 | cut -d' ' -f2);
+NODE3=$(sudo cat /opt/iprf/firmware/NodeCounter.awk /opt/iprf/tmp/rpltopology_graph.txt 2>&- | sed '4q;d' | cut -d',' -f2 | cut -d' ' -f2);
+
+if [$NODE1 -gt 1];
+	then NODE1="0";
+fi;
+if [$NODE2 -gt 1];
+	then NODE2="0";
+fi;
+if [$NODE3 -gt 1];
+	then NODE3="0";
+fi;
+
+
+if test -f /opt/iprf/tmp/rpltopology_graph.txt;
+	then TOTAL_ENDPOINTS=$(sudo cat /opt/iprf/tmp/rpltopology_graph.txt | grep -i color | sed '$d' | wc -l) ; 
+if [ $TOTAL_ENDPOINTS -gt 1 ];
+	then TOTAL_ENDPOINTS=$((TOTAL_ENDPOINTS - 1)) ;
+fi ; 
+	else TOTAL_ENDPOINTS="0"; 
+fi;
+
+
+if test -f /opt/iprf/tmp/RplRoot.log;  then 
+    Total_Packets="$(sudo cat /opt/iprf/tmp/RplRoot.log | grep SendLoadFactor | cut -d ' ' -f9 | cut -d = -f2 | cut -d , -f1 | tail -1)";  
+    Max_Packets="$(sudo cat /opt/iprf/tmp/RplRoot.log | grep SendLoadFactor | cut -d ' ' -f10 | cut -d = -f2 | cut -d , -f1 | tail -1)";
+fi
+LOAD_PERCENT=$(awk "BEGIN { LoadPercent=100*${Total_Packets}/${Max_Packets}; printf \"%.2f\n\", (LoadPercent) }") ;
+
+fi;
+echo "{\"cpu\":\"$CPU\",\"uptime\":\"$UPTIME\",\"gateway\":\"$GATEWAY\",\"netaddr\":\"$NETADDR\",\"netmask\":\"$NETMASK\",\"total_endpoints\":\"$TOTAL_ENDPOINTS\",\"load_percent\":\"$LOAD_PERCENT\",\"node1\":\"$NODE1\",\"node2\":\"$NODE2\",\"node3\":\"$NODE3\"}"
