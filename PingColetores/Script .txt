@@ -1,0 +1,32 @@
+$computers = @(
+    '10.98.227.38'
+    '10.98.226.38'
+    '10.98.231.38'
+    '10.98.225.38'
+)
+
+
+ # 1 minute
+ $limit_in_minutes = 1400
+
+ $start_timer = Get-Date
+ Do {
+    #para o loop
+    $current_time = Get-Date
+
+    $TimeStampFormat = 'yyyy-MM-dd HH:mm:ss'
+    $TimeStamp = [datetime]::Now.ToString($TimeStampFormat)
+
+        foreach ($computer in $computers) {
+        $pingComputer = Test-Connection $computer -Count 1 -Quiet
+        if ($pingComputer) {
+            $TimeStamp + " $computer is up" | Out-File -FilePath C:\Temp\Services.txt -Append
+        } else {
+            $TimeStamp + " $computer is down" | Out-File -FilePath C:\Temp\Services.txt -Append    
+        }
+    }
+
+    $running_minutes = [int]((New-TimeSpan –Start $start_timer –End $current_time).minutes) 
+    $running_seconds = [int]((New-TimeSpan –Start $start_timer –End $current_time).seconds) 
+    Write-Output  "Running for: $($running_minutes)m:$($running_seconds)s" 
+ } Until ($running_minutes -ge $limit_in_minutes)
