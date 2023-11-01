@@ -1,0 +1,2 @@
+hostname,visible_name,ip_address,DNS,Groups,type_full,name,alias,serialno_a,serialno_b,tag,asset_tag,location_lat,location_lon,Templates
+4005a5fa,MAG2062101,fda0::179:1c:6400:4005:a5fa,4005a5fa.lg.net,LIGHT|LIGHT/METER/MAGNOGRID,Magno Grid - M733,4005a5fa,MAG2062101,4005a5fa,1074111994,LIGHT,NOC::TIER1,-22.711097,-43.3314722,10921
